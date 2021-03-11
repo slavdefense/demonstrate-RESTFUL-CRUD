@@ -27,6 +27,7 @@ app.post("/comments", (req, res) => {
 
   const { username, comment } = req.body;
   intro.push({ username: username, comment: comment });
+  res.redirect("/comments");
 });
 
 app.listen(3000, (req, res) => {
