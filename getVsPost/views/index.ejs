@@ -7,6 +7,11 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>we have your food:<%=info%></h1>
+    <p>comments and whatelse</p>
+    <%for(item of info){%>
+    <p><%=item.username%></p>
+    <p><%=item.comment%></p>
+
+    <%}%>
   </body>
 </html>
