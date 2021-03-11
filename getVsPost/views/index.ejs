@@ -7,11 +7,11 @@
     <title>Document</title>
   </head>
   <body>
-    <p>comments and whatelse</p>
-    <%for(item of info){%>
-    <p><%=item.username%></p>
-    <p><%=item.comment%></p>
-
-    <%}%>
+    <h1>General Introductions</h1>
+    <ul>
+      <% for(item of intro){ %>
+      <li><%= item.comment %> - <b><%= item.username %> </b></li>
+      <% } %>
+    </ul>
   </body>
 </html>
