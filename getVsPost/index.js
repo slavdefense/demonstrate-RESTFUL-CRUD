@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const { v4: uuidv4 } = require("uuid");
+const methodOverride = require("method-override");
 uuidv4();
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views"));
@@ -10,6 +11,7 @@ app.set("views", path.join(__dirname, "/views"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.use(methodOverride("_method"));
 const intro = [
   { username: "gdawg", comment: " Hey this is me Gurkha!", id: uuidv4() },
   { username: "dips", comment: "Hey this is Dips", id: uuidv4() },
@@ -30,6 +32,12 @@ app.get("/comments/:id", (req, res) => {
 
   res.render("comments/find", { user });
   console.log(user);
+});
+
+app.get("/comments/:id/edit", (req, res) => {
+  const { id } = req.params;
+  const user = intro.find((element) => element.id === id);
+  res.render("comments/edit", { user });
 });
 
 app.patch("/comments/:id", (req, res) => {
