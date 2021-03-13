@@ -13,5 +13,10 @@
     <p>Here is the id: <%= %>user.id</p>
     <a href="/comments">back to comments</a>
     <a href="/comments/<%= user.id %>/edit">Edit your comments</a>
+    <form method="POST" action="/comments/<%=user.id%>?_method=DELETE">
+      <button>delete</button>
+    </form>
   </body>
 </html>
+
+<!-- <form method="post" action="/comments/<%=user.id%>?_method=PATCH"></form> -->

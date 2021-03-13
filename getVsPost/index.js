@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(methodOverride("_method"));
-const intro = [
+let intro = [
   { username: "gdawg", comment: " Hey this is me Gurkha!", id: uuidv4() },
   { username: "dips", comment: "Hey this is Dips", id: uuidv4() },
   { username: "shree", comment: "Hey yea! Nice to meet ya", id: uuidv4() },
@@ -32,6 +32,13 @@ app.get("/comments/:id", (req, res) => {
 
   res.render("comments/find", { user });
   console.log(user);
+});
+app.delete("/comments/:id", function (req, res) {
+  const { id } = req.params;
+  intro = intro.filter((element) => {
+    return element.id != id;
+  });
+  res.redirect("/comments");
 });
 
 app.get("/comments/:id/edit", (req, res) => {
